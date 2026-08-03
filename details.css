@@ -1,7 +1,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-image: url("file:///C:/Users/Omar/Downloads/ChatGPT%20Image%20Aug%203,%202026,%2003_46_22%20AM.png");
+    background-image: url("ChatGPT Image Aug 3, 2026, 03_46_22 AM.png");
     background-size: 100% 100%; background-repeat: no-repeat; background-position: center; background-attachment: fixed;
     min-height: 100vh; display: flex; justify-content: center; align-items: center; font-family: 'Inter', sans-serif;
     color: #1e293b; overflow-x: hidden;
