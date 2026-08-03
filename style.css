@@ -1,0 +1,200 @@
+/* Import all necessary fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@1,400;1,700&family=Inter:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* REPLACE THE URL BELOW with your Adobe Stock image path or link */
+    background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2029&auto=format&fit=crop'); 
+    
+    background-size: cover;       /* Makes the image cover the whole screen */
+    background-position: center;  /* Centers the image */
+    background-attachment: fixed; /* Keeps the background from moving when you scroll */
+    background-repeat: no-repeat;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+
+/* Background Animated Blobs (Keeping these for the outer look) */
+.background-blobs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: radial-gradient(circle at top left, rgba(30, 58, 138, 0.3) 0%, transparent 50%); /* Subtle top-left glow */
+}
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px); /* Heavy blur for that "smoke" look */
+    opacity: 0.6;
+}
+.blob-1 {
+    width: 600px;
+    height: 600px;
+    background: #1e40af; /* Royal Blue */
+    top: -150px;
+    left: -150px;
+    animation: pulse-blue 10s infinite alternate;
+}
+
+/* The Subtle Purple Light in Bottom Right */
+.blob-2 {
+    width: 500px;
+    height: 500px;
+    background: #4c1d95; /* Deep Purple */
+    bottom: -100px;
+    right: -100px;
+    opacity: 0.3;
+    animation: pulse-purple 12s infinite alternate;
+}
+
+@keyframes move {
+    from { transform: translate(0, 0); }
+    to { transform: translate(100px, 100px); }
+}
+
+/* The Card Container */
+.container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+.profile-card {
+    background-image: url("file:///C:/Users/Omar/Downloads/ChatGPT%20Image%20Aug%203,%202026,%2003_46_22%20AM.png");
+    background-size: cover;
+    background-position: center;
+    background-color: #fdfbf7;
+    border-radius: 60px; /* Increased from 40px to 60px */
+    padding: 60px 35px;
+    text-align: center;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+    border: none;
+}
+
+/* Heart Icon / Avatar */
+.avatar img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    /* Changed border color to match the blue flowers */
+    border: 2px solid #5dade2; 
+    margin-bottom: 30px;
+    padding: 5px;
+}
+
+/* Names - CHANGED TO DARK COLOR (#2c3e50) */
+.name {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    letter-spacing: 6px; 
+    color: #2c3e50; 
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+/* The Ampersand - CHANGED TO SOFT BLUE */
+.and-text {
+    display: block;
+    color: #5dade2;
+    font-family: 'Playfair Display', serif;
+    font-size: 45px;
+    font-style: italic;
+    margin: 15px 0;
+}
+
+/* The Elegant Line - CHANGED TO DARK GRADIENT */
+.elegant-line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #2c3e50, transparent);
+    margin: 25px auto;
+    opacity: 0.3;
+}
+
+/* Wedding Date - CHANGED TO DARK GREY */
+.wedding-date {
+    color: #2c3e50;
+    font-size: 1.3rem; /* Made slightly bigger */
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.invite-text {
+    color: #94a3b8;
+    font-size: 1rem;
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+.link-item {
+    display: inline-flex; /* Changed to inline-flex to fit the text better */
+    align-items: center;
+    justify-content: center;
+    padding: 18px 80px;  /* Added more horizontal padding for the oval look */
+    border-radius: 50px; /* THIS MAKES IT OVAL */
+    background: #2c3e50;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    font-size: 18px;
+    width: 80%;          /* Makes the button wide like the image */
+}
+
+.link-item:hover {
+    background: #1a252f;
+    transform: scale(1.02);
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8); /* Dark blur background */
+    backdrop-filter: blur(10px);
+}
+
+/* Modal Content Box */
+.modal-content {
+    background-color: #fdfaf3;
+    margin: 15% auto;
+    padding: 40px;
+    border-radius: 40px;
+    width: 80%;
+    max-width: 350px;
+    text-align: center;
+    position: relative;
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    right: 20px; top: 15px;
+    font-size: 30px;
+    color: #1e293b;
+    cursor: pointer;
+}

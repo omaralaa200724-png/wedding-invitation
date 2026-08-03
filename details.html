@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Details</title>
+    <link rel="stylesheet" href="details.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Playfair+Display:ital,wght@1,400&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- FLOATING MUSIC BUTTON -->
+    <div class="music-controller">
+        <button id="musicBtn" class="floating-music-btn" onclick="toggleMusic()">
+            <i id="musicIcon" class="fas fa-play"></i>
+            <span id="musicText">PLAY MUSIC</span>
+        </button>
+    </div>
+
+    <!-- AUDIO ELEMENT (Uses your perfectly cut song) -->
+    <audio id="weddingMusic" loop autoplay>
+    <source src="wedding-song.mp3" type="audio/mpeg">
+</audio>
+
+    <div class="main-content">
+        <h1 class="title">CEREMONY INFO</h1>
+        <p class="announcement">WE JOYFULLY ANNOUNCE THE<br>WEDDING OF OUR CHILDREN</p>
+        <div class="blue-line"></div>
+
+        <div class="names-stack">
+            <h2 class="main-name">ISMAIL</h2>
+            <span class="role">GROOM</span>
+            <span class="small-ampersand">&</span>
+            <h2 class="main-name">YARA</h2>
+            <span class="role">BRIDE</span>
+            <div class="name-finish-line"></div>
+        </div>
+
+        <div class="gallery-section">
+            <h3 class="gallery-title">PHOTO GALLERY</h3>
+            <div class="photo-grid">
+                <div class="photo-placeholder"><img src="C:\Users\Omar\OneDrive\Desktop\yara\pngtree-cartoon-bride-and-groom-appear-png-image_20553976.png" alt="Photo 1"></div>
+                <div class="photo-placeholder"><img src="C:\Users\Omar\OneDrive\Desktop\yara\pngtree-cartoon-bride-and-groom-appear-png-image_20553976.png" alt="Photo 2"></div>
+            </div>
+        </div>
+
+        <div class="reception-section">
+            <h2 class="gallery-title">RECEPTION INFO</h2>
+            <div class="time-date-box">
+                <span class="big-time">20:00</span>
+                <div class="date-divider"></div>
+                <span class="big-date">FRIDAY | 04 | SEPTEMBER</span>
+            </div>
+
+            <div id="countdown" class="countdown-container">
+                <div class="time-unit"><span id="days">00</span><label>Days</label></div>
+                <div class="time-unit"><span id="hours">00</span><label>Hours</label></div>
+                <div class="time-unit"><span id="minutes">00</span><label>Mins</label></div>
+                <div class="time-unit"><span id="seconds">00</span><label>Secs</label></div>
+            </div>
+        </div>
+
+        <div class="calendar-wrapper">
+            <img src="C:\Users\Omar\OneDrive\Desktop\096549f7-6231-488b-a4a4-dbf3e3348906.png" alt="September 2026 Calendar">
+        </div>
+
+        <div class="venue-section">
+            <div class="mini-blue-line"></div> 
+            <h3 class="gallery-title">RECEPTION VENUE</h3>
+            <p class="venue-name">esm el qa3a</p>
+            <p class="venue-location">mkan el qa3a</p>
+            <a href="https://www.google.com/maps?q=29.98638343811035,30.989543914794922" target="_blank" class="map-link-btn">VIEW ON MAP</a>
+        </div>
+
+        <div class="schedule-section">
+            <div class="mini-blue-line"></div>
+            <h3 class="gallery-title">DAY SCHEDULE</h3>
+            <div class="timeline">
+            <div class="timeline-item"><div class="time">18:30</div><div class="dot-container"><div class="dot"></div></div><div class="event">Welcome</div></div>
+            <div class="timeline-item"><div class="time">19:00</div><div class="dot-container"><div class="dot"></div></div><div class="event">Reception</div></div>
+            <div class="timeline-item"><div class="time">20:00</div><div class="dot-container"><div class="dot"></div></div><div class="event">Party</div></div>
+            <div class="timeline-item"><div class="time">20:45</div><div class="dot-container"><div class="dot"></div></div><div class="event">Being ready</div></div>
+            <div class="timeline-item"><div class="time">21:30</div><div class="dot-container"><div class="dot"></div></div><div class="event">Buffet</div></div>
+            <div class="timeline-item"><div class="time">22:15</div><div class="dot-container"><div class="dot"></div></div><div class="event">temporary</div></div>
+            <div class="timeline-item"><div class="time">00:00</div><div class="dot-container"><div class="dot"></div></div><div class="event">End</div></div>
+        </div>
+        </div>
+
+        <div class="guestbook-section">
+            <div class="mini-blue-line"></div>
+            <h3 class="gallery-title">GUESTBOOK</h3>
+            <form id="guestbook-form" class="guestbook-form">
+                <input type="text" id="guest-name" placeholder="Your Name" required>
+                <textarea id="guest-wish" placeholder="Write your wishes here..." rows="4" required></textarea>
+                <button type="submit" class="oval-btn-small">SEND WISHES</button>
+            </form>
+            <div id="wishes-display" class="wishes-container"></div>
+        </div>
+
+        <div class="nav">
+            <a href="index.html" class="oval-btn">GO BACK</a>
+            <p class="omar-credit">made by omar</p>
+        </div>
+    </div>
+
+    <script>
+        /* --- 1. Automated Music Logic --- */
+const music = document.getElementById("weddingMusic");
+const btn = document.getElementById("musicBtn");
+const icon = document.getElementById("musicIcon");
+const text = document.getElementById("musicText");
+
+// This function handles the button click
+function toggleMusic() {
+    if (music.paused) {
+        playMusic();
+    } else {
+        pauseMusic();
+    }
+}
+
+function playMusic() {
+    music.play();
+    btn.classList.add("playing");
+    icon.className = "fas fa-pause";
+    text.innerText = "STOP MUSIC";
+}
+
+function pauseMusic() {
+    music.pause();
+    btn.classList.remove("playing");
+    icon.className = "fas fa-play";
+    text.innerText = "PLAY MUSIC";
+}
+
+// TRY TO PLAY AUTOMATICALLY ON LOAD
+window.addEventListener('DOMContentLoaded', () => {
+    // We wrap this in a timeout to give the browser a split second to initialize
+    setTimeout(() => {
+        music.play().then(() => {
+            // If autoplay works, update the button UI
+            btn.classList.add("playing");
+            icon.className = "fas fa-pause";
+            text.innerText = "STOP MUSIC";
+        }).catch(error => {
+            // If autoplay is blocked, the button stays as "PLAY MUSIC"
+            console.log("Autoplay was blocked by the browser. User must click play.");
+        });
+    }, 500);
+});
+
+        /* --- 2. Countdown Logic --- */
+        const targetDate = new Date("September 4, 2026 20:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const dist = targetDate - now;
+            document.getElementById("days").innerText = Math.floor(dist / 86400000).toString().padStart(2, '0');
+            document.getElementById("hours").innerText = Math.floor((dist % 86400000) / 3600000).toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = Math.floor((dist % 3600000) / 60000).toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = Math.floor((dist % 60000) / 1000).toString().padStart(2, '0');
+        }, 1000);
+
+        /* --- 3. Guestbook Logic --- */
+        const wishForm = document.getElementById('guestbook-form');
+        const wishesDisplay = document.getElementById('wishes-display');
+        window.addEventListener('load', loadWishes);
+        wishForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const wishes = JSON.parse(localStorage.getItem('weddingWishes')) || [];
+            wishes.unshift({ name: document.getElementById('guest-name').value, wish: document.getElementById('guest-wish').value });
+            localStorage.setItem('weddingWishes', JSON.stringify(wishes));
+            wishForm.reset(); loadWishes();
+        });
+        function loadWishes() {
+            wishesDisplay.innerHTML = '';
+            (JSON.parse(localStorage.getItem('weddingWishes')) || []).forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'wish-card';
+                card.innerHTML = `<h4>${item.name}</h4><p>"${item.wish}"</p>`;
+                wishesDisplay.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
